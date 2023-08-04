@@ -4,6 +4,15 @@
   <style>
     
     body {
+      <div class="quform-element quform-element-recaptcha">
+    <div class="quform-spacer">
+        <label>Are you human? <span class="quform-required">*</span></label>
+        <div class="quform-input">
+            <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
+            <noscript>Please enable JavaScript to submit this form.</noscript>
+        </div>
+    </div>
+</div>
       background-image: url("partials/images.jpeg");
       background-repeat: repeat;
       width: 100%;
@@ -21,7 +30,24 @@
       color: white;
       text-align: center;
     }
-    
+
+<script type="text/javascript" src="quform/js/scripts.js"></script>
+      <script>
+    window.QuformRecaptchaLoaded = function () {
+        if (window.grecaptcha && window.jQuery) {
+            jQuery('.g-recaptcha').each(function () {
+                var $recaptcha = jQuery(this);
+ 
+                if ($recaptcha.is(':empty')) {
+                    $recaptcha.data('recaptcha-id', grecaptcha.render($recaptcha[0]));
+                }
+            });
+        }
+    };
+</script>
+<script src="https://www.google.com/recaptcha/api.js?onload=QuformRecaptchaLoaded&amp;render=explicit" async defer></script>
+
+      
   </style
     </head>
     
